@@ -63,7 +63,7 @@ class MainActivity : ComponentActivity() {
                     bottomBar = {
                         BottomAppBar {
                             OutlinedButton(
-                                onClick = { cache[++count] = "Hello $count" }
+                                onClick = { cache[count++] = SimpleDateFormat.getDateTimeInstance().format(System.currentTimeMillis()) }
                             ) { Text("Add to the cache") }
                         }
                     }
@@ -79,8 +79,7 @@ class MainActivity : ComponentActivity() {
                         }
 
                         items(map.toList()) {
-                            val time = remember { SimpleDateFormat.getDateTimeInstance().format(System.currentTimeMillis()) }
-                            Text("${it.first} == ${it.second} at $time")
+                            Text("${it.first} == ${it.second}")
                         }
 
                     }
